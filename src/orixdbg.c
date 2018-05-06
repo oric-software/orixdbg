@@ -29,18 +29,18 @@ void joystick_menu()
 	POKE(0x0320,128+64);
 	while (1)
 	{
-		control=PEEK(0x320)&(1+2+4+8+16);
+		control=PEEK(0x320);
 		control_button=PEEK(0x321);
 		printf("control %d\n",control);
-		if (control&1==0)
+		if (control==254)
 			printf("Right\n");
-		if (control&2==0)
+		if (control==253)
 			printf("Left\n");		
-		if (control&4==0)
+		if (control==255-4)
 			printf("fire\n");		
-		if (control&8==0)
+		if (control==255-8)
 			printf("down\n");
-		if (control&16==0)
+		if (control==255-16)
 			printf("up\n");
 		if (control_button&32==0)
 		    printf("third button\n");
